@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar__random-game {
+  width: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbar__random-game {
+    display: none;
+  }
+}
