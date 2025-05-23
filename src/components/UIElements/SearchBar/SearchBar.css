@@ -1,0 +1,32 @@
+.search-bar {
+  min-width: 500px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background-color: var(--accent-color);
+  border: var(--stroke-width) solid black;
+  border-radius: 5px;
+
+  padding: 0 10px;
+
+  box-shadow: 3px 3px 0 var(--primary-color);
+}
+
+.search-bar__icon {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
+.search-bar__input {
+  font-size: 20px;
+  border: none;
+  background: none;
+  width: 100%;
+}
+
+.search-bar__input:focus {
+  outline: none;
+}
