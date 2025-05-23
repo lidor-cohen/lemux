@@ -5,9 +5,19 @@
 }
 
 .navbar__random-game {
-  width: 40px;
+  width: 35px;
   margin-left: 10px;
   cursor: pointer;
+
+  filter: drop-shadow(
+    0 0 5px color-mix(in srgb, var(--primary-color) 60%, transparent)
+  );
+
+  transition: transform 0.5s ease-out;
+}
+
+.navbar__random-game:hover {
+  transform: rotate(360deg);
 }
 
 @media only screen and (max-width: 600px) {

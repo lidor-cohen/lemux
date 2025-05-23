@@ -2,15 +2,22 @@
   padding: 15px 30px;
 
   border: var(--stroke-width) solid black;
-  border-radius: var(--border-radius);
+  border-radius: 10px;
 
   font-weight: 700;
   font-size: 18px;
 
-  box-shadow: 4px 4px 0 black;
+  box-shadow: 2px 2px 0 var(--primary-color);
 
   transition: box-shadow 0.1s ease-out, transform 0.1s ease-out;
   cursor: pointer;
+
+  min-width: 100px;
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .button__text {
@@ -20,11 +27,11 @@
 
 .button:active {
   box-shadow: 1px 1px 0 black;
-  transform: translate(3px, 3px);
+  transform: translate(1px, 1px);
 }
 
-.button:hover .button__text {
-  transform: skewX(5deg);
+.button:hover {
+  box-shadow: 1px 1px 0 var(--primary-color);
 }
 
 .primary-button {
@@ -33,6 +40,12 @@
 }
 
 .secondary-button {
-  color: var(--primary-color);
+  color: black;
+  font-weight: 500;
   background-color: var(--accent-color);
+}
+
+.button__icon {
+  width: 15px;
+  aspect-ratio: 1;
 }
