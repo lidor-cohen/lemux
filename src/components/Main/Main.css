@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  gap: 20px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  gap: 20px;
+
+  justify-items: center;
+  width: fit-content;
+}

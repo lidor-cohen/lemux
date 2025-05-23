@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import NotFoundImage from "../../assets/images/imagenotfound.jpg";
 import ArrowImage from "../../assets/icons/arrow.svg";
 import Button from "../UIElements/Button/Button";
+import TagBox from "../UIElements/TagBox/TagBox";
 
 function GameCard({
   id,
@@ -26,8 +27,10 @@ function GameCard({
       />
       <h2 className="gamecard__title">{title}</h2>
       <h3 className="gamecard__subtitle">Released on {releaseDate}</h3>
+      <TagBox tags={["Action", "Ashwagnada", "Drama"]} />
       <Button
         theme="secondary"
+        label="Read More"
         icon={ArrowImage}
         onClick={() => {
           navigate("/" + id);

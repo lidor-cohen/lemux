@@ -1,0 +1,11 @@
+.tag {
+  padding: 1px 15px;
+  background-color: var(--primary-color);
+  width: fit-content;
+  font-size: 10px;
+  color: var(--text-color);
+  font-weight: 500;
+  font-family: "IBM Sans Plex", sans-serif;
+  border-radius: 50px;
+  border: 1.5px solid black;
+}

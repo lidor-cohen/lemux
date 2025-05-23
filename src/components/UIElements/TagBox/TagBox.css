@@ -1,0 +1,5 @@
+.tagbox {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
