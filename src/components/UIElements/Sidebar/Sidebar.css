@@ -1,8 +1,16 @@
 .sidebar {
+  max-width: 250px;
   width: 100%;
   background-color: var(--accent-color);
 
   border-radius: 8px;
   border: 3px solid black;
   box-shadow: 4px 4px 0 var(--primary-color);
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    max-width: 100%;
+    min-height: 50px;
+  }
 }

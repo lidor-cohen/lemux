@@ -24,6 +24,8 @@
   .navbar {
     flex-direction: column;
     gap: 0;
+
+    margin-bottom: 20px;
   }
 
   .navbar__random-game {

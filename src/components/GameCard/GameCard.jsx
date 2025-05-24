@@ -14,7 +14,7 @@ function GameCard({
   rating,
   releaseDate,
   tags = [],
-  backgroundImage = NotFoundImage,
+  coverImage = NotFoundImage,
 }) {
   let navigate = useNavigate();
 
@@ -22,20 +22,22 @@ function GameCard({
     <div className="gamecard">
       <img
         className="gamecard__cover"
-        src={backgroundImage}
+        src={coverImage}
         alt={`${title} cover image`}
       />
       <h2 className="gamecard__title">{title}</h2>
       <h3 className="gamecard__subtitle">Released on {releaseDate}</h3>
-      <TagBox tags={["Action", "Ashwagnada", "Drama"]} />
-      <Button
-        theme="secondary"
-        label="Read More"
-        icon={ArrowImage}
-        onClick={() => {
-          navigate("/" + id);
-        }}
-      />
+      <TagBox tags={tags} />
+      <div className="gamecard__button">
+        <Button
+          theme="secondary"
+          label="Read More"
+          icon={ArrowImage}
+          onClick={() => {
+            navigate("/" + id);
+          }}
+        />
+      </div>
     </div>
   );
 }

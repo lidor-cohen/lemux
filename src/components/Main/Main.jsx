@@ -1,189 +1,36 @@
-import GameCard from "../GameCard/GameCard";
-import SearchBar from "../UIElements/SearchBar/SearchBar";
-import Sidebar from "../UIElements/Sidebar/Sidebar";
 import "./Main.css";
 
+import { getGameList } from "../../utils/apis/rawgApi";
+
+import GameCard from "../GameCard/GameCard";
+import Sidebar from "../UIElements/Sidebar/Sidebar";
+import { useEffect, useState } from "react";
+
 function Main() {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    getGameList({ numberOfResults: 12 })
+      .then((res) => res.json())
+      .then((json) => setGames(json.results));
+  }, []);
+
   return (
     <div className="main">
       <Sidebar />
       <div className="gallery">
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
-
-        <GameCard
-          id="123"
-          title="Doom: Eternal Darkness"
-          platforms={[]}
-          rating
-          releaseDate="23 March 2023"
-          tags={[]}
-        />
+        {games.map((item) => (
+          <GameCard
+            key={item.id}
+            id={item.id}
+            title={item.name}
+            releaseDate={item.released}
+            coverImage={item.background_image}
+            platforms={[]}
+            rating={item.rating}
+            tags={item.genres.map((item) => item.name)}
+          />
+        ))}
       </div>
     </div>
   );

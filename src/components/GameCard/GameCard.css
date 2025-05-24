@@ -1,5 +1,5 @@
 .gamecard {
-  max-width: 250px;
+  width: 250px;
 
   padding: 10px;
   padding-bottom: 15px;
@@ -32,4 +32,11 @@
 .gamecard__cover {
   width: 100%;
   border-radius: 4px;
+  height: 140px;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid black;
+}
+.gamecard__button {
+  margin-top: auto;
 }
