@@ -24,11 +24,13 @@ function GameCard({
 
   return (
     <div className="gamecard">
-      <img
-        className="gamecard__cover"
-        src={coverImage}
-        alt={`${title} cover image`}
-      />
+      <div className="gamecard__cover-container">
+        <img
+          className="gamecard__cover"
+          src={coverImage}
+          alt={`${title} cover image`}
+        />
+      </div>
       <div className="gamecard__pnr">
         <div className="gamecard__platforms">
           <PlatformsIcons platforms={platforms} />
