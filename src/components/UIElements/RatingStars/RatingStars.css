@@ -1,0 +1,12 @@
+.rating-stars {
+  display: flex;
+  align-items: center;
+}
+
+.rating-star {
+  width: 20px;
+}
+
+.rating-star_type_empty {
+  filter: grayscale(100);
+}

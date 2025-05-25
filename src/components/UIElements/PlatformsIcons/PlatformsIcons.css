@@ -1,0 +1,9 @@
+.platforms-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.platforms-icons img {
+  width: 12.5px;
+  aspect-ratio: 1;
+}

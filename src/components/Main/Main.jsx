@@ -12,7 +12,10 @@ function Main() {
   useEffect(() => {
     getGameList({ numberOfResults: 12 })
       .then((res) => res.json())
-      .then((json) => setGames(json.results));
+      .then((json) => {
+        setGames(json.results);
+        console.log(json.results);
+      });
   }, []);
 
   return (
@@ -26,7 +29,7 @@ function Main() {
             title={item.name}
             releaseDate={item.released}
             coverImage={item.background_image}
-            platforms={[]}
+            platforms={item.platforms.map((obj) => obj.platform.slug)}
             rating={item.rating}
             tags={item.genres.map((item) => item.name)}
           />

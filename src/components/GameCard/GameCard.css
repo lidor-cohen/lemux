@@ -16,6 +16,21 @@
   box-shadow: 4px 4px 0 var(--primary-color);
 }
 
+.gamecard__cover {
+  width: 100%;
+  border-radius: 4px;
+  height: 140px;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid black;
+}
+
+.gamecard__pnr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .gamecard__title {
   margin: 0;
   font-size: 19px;
@@ -29,14 +44,6 @@
   color: var(--secondary-text-color);
 }
 
-.gamecard__cover {
-  width: 100%;
-  border-radius: 4px;
-  height: 140px;
-  object-fit: cover;
-  object-position: top;
-  border: 2px solid black;
-}
 .gamecard__button {
   margin-top: auto;
 }
