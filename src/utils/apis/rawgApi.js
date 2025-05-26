@@ -18,5 +18,5 @@ const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
 };
 
 export const getGameList = ({ page = 1 }) => {
-  return call({ endpoint: "/games", params: { page_size: 24, page } });
+  return call({ endpoint: "/games", params: { page_size: 12, page } });
 };
