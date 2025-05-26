@@ -14,11 +14,9 @@ const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
   if (Object.keys(params).length > 0)
     url += `&${new URLSearchParams(params).toString()}`;
 
-  console.log({ url, options });
-
   return fetch(url, options);
 };
 
-export const getGameList = ({ numberOfResults = 25 }) => {
-  return call({ endpoint: "/games", params: { page_size: numberOfResults } });
+export const getGameList = ({ page = 1 }) => {
+  return call({ endpoint: "/games", params: { page_size: 24, page } });
 };

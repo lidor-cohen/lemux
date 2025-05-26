@@ -8,14 +8,26 @@ import { useEffect, useState } from "react";
 
 function Main() {
   const [games, setGames] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getGameList({ numberOfResults: 12 })
+    getGameList({ page })
       .then((res) => res.json())
       .then((json) => {
-        setGames(json.results);
-        console.log(json.results);
+        setGames((prevGames) => [...prevGames, ...json.results]);
       });
+  }, [page]);
+
+  function handleScroll() {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    )
+      setPage((prev) => prev + 1);
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   return (

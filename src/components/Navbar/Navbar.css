@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.navbar__logo {
+  cursor: pointer;
+}
+
 .navbar__random-game {
   width: 35px;
   margin-left: 10px;

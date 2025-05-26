@@ -1,6 +1,9 @@
 .sidebar {
+  position: sticky;
+  top: 20px;
   max-width: 250px;
   width: 100%;
+  height: min(60vh, 600px);
   background-color: var(--accent-color);
 
   border-radius: 8px;
@@ -10,6 +13,9 @@
 
 @media only screen and (max-width: 600px) {
   .sidebar {
+    position: static;
+    top: 0;
+    height: auto;
     max-width: 100%;
     min-height: 50px;
   }

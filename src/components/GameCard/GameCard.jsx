@@ -1,7 +1,6 @@
 import "./GameCard.css";
 
 import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
 
 import NotFoundImage from "../../assets/images/imagenotfound.jpg";
 import ArrowImage from "../../assets/icons/arrow.svg";
