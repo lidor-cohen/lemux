@@ -17,6 +17,10 @@ const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
   return fetch(url, options);
 };
 
-export const getGameList = ({ page = 1 }) => {
-  return call({ endpoint: "/games", params: { page_size: 12, page } });
+export const getGameList = ({ page = 1, sort }) => {
+  const params = { page, page_size: 12 };
+
+  if (sort) params.ordering = sort;
+
+  return call({ endpoint: "/games", params });
 };
