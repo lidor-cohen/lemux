@@ -14,7 +14,9 @@ function App() {
   const [currentFilters, setCurrentFilters] = useState({
     sort: "added",
     ordering: "Descending",
-    filters: {},
+    filters: {
+      genre: "None",
+    },
   });
 
   return (

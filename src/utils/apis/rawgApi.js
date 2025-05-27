@@ -17,10 +17,15 @@ const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
   return fetch(url, options);
 };
 
-export const getGameList = ({ page = 1, sort }) => {
+export const getGameList = ({ page = 1, sort, genre }) => {
   const params = { page, page_size: 12 };
 
   if (sort) params.ordering = sort;
+  if (genre) params.genres = genre.toLowerCase();
 
   return call({ endpoint: "/games", params });
+};
+
+export const getGenreList = () => {
+  return call({ endpoint: "/genres", params: { page_size: 6 } });
 };

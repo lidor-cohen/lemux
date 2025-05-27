@@ -34,7 +34,8 @@ function Gallery() {
         .then((json) => {
           setCurrentGallery((prevGames) => [...prevGames, ...json.results]);
           setLoading(false);
-        });
+        })
+        .catch(console.error);
   }, [page]);
 
   useEffect(() => {
@@ -47,12 +48,17 @@ function Gallery() {
         currentFilters.ordering === "Descending"
           ? `-${currentFilters.sort}`
           : `${currentFilters.sort}`,
+      genre:
+        currentFilters.filters.genre === "None"
+          ? ""
+          : currentFilters.filters.genre,
     })
       .then((res) => res.json())
       .then((json) => {
         setCurrentGallery(json.results);
         setLoading(false);
-      });
+      })
+      .catch(console.error);
   }, [currentFilters]);
 
   function handleScroll() {
