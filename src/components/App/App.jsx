@@ -12,7 +12,7 @@ import CurrentFiltersContext from "../../contexts/CurrentFiltersContext";
 function App() {
   const [currentGallery, setCurrentGallery] = useState([]);
   const [currentFilters, setCurrentFilters] = useState({
-    sort: "name",
+    sort: "added",
     ordering: "Descending",
     filters: {},
   });

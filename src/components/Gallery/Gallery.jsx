@@ -14,9 +14,7 @@ function Gallery() {
     CurrentGalleryContext
   );
 
-  const { currentFilters, setCurrentFilters } = useContext(
-    CurrentFiltersContext
-  );
+  const { currentFilters } = useContext(CurrentFiltersContext);
 
   const galleryRef = useRef();
 

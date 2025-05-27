@@ -19,7 +19,7 @@ function Sidebar() {
     const sortSlugMap = {
       "A-Z": "name",
       Released: "released",
-      "Date Added": "added",
+      Relevant: "added",
       "Date Created": "created",
       Rating: "rating",
     };
@@ -59,7 +59,7 @@ function Sidebar() {
       <div className="sidebar__item">
         <h3 className="sidebar__item-header">sort</h3>
         <Tagbox
-          tags={["A-Z", "Released", "Rating", "Date Added", "Date Created"]}
+          tags={["Relevant", "A-Z", "Released", "Rating", "Date Created"]}
           action={handleSort}
         />
       </div>
