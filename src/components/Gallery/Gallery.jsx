@@ -13,7 +13,6 @@ function Gallery() {
   const { currentGallery, setCurrentGallery } = useContext(
     CurrentGalleryContext
   );
-
   const { currentFilters } = useContext(CurrentFiltersContext);
 
   const galleryRef = useRef();

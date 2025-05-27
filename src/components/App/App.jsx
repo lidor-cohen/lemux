@@ -6,6 +6,7 @@ import { useState } from "react";
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import Navbar from "../Navbar/Navbar";
+
 import CurrentGalleryContext from "../../contexts/CurrentGalleryContext";
 import CurrentFiltersContext from "../../contexts/CurrentFiltersContext";
 

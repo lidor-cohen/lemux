@@ -29,3 +29,19 @@ export const getGameList = ({ page = 1, sort, genre }) => {
 export const getGenreList = () => {
   return call({ endpoint: "/genres", params: { page_size: 6 } });
 };
+
+export const getStores = () => {
+  return call({ endpoint: "/stores" });
+};
+
+export const getGameDetails = ({ id }) => {
+  return call({ endpoint: `/games/${id}` });
+};
+
+export const getGameStores = ({ id }) => {
+  return call({ endpoint: `/games/${id}/stores` });
+};
+
+export const getGameTrailers = ({ id }) => {
+  return call({ endpoint: `/games/${id}/movies` });
+};

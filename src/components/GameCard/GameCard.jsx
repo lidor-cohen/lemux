@@ -19,6 +19,7 @@ function GameCard({
   releaseDate,
   tags = [],
   coverImage = NotFoundImage,
+  action = () => {},
 }) {
   const [imageSrc, setImageSrc] = useState(coverImage || NotFoundImage);
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ function GameCard({
           icon={ArrowImage}
           onClick={() => {
             navigate("/" + id);
+            action();
           }}
         />
       </div>
