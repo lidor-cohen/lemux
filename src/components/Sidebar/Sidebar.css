@@ -11,6 +11,10 @@
 
   padding: 20px;
   color: var(--background-color);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .sidebar__header {
@@ -18,9 +22,15 @@
   text-transform: uppercase;
 }
 
+.sidebar__item_type_inline {
+  display: flex;
+  gap: 12px;
+  height: fit-content;
+}
+
 .sidebar__item-header {
   text-transform: capitalize;
-  margin-bottom: 5px;
+  margin: 0;
 }
 
 @media only screen and (max-width: 600px) {

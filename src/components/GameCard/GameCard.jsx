@@ -1,6 +1,7 @@
 import "./GameCard.css";
 
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 import NotFoundImage from "../../assets/images/imagenotfound.jpg";
 import ArrowImage from "../../assets/icons/arrow.svg";
@@ -19,15 +20,21 @@ function GameCard({
   tags = [],
   coverImage = NotFoundImage,
 }) {
-  let navigate = useNavigate();
+  const [imageSrc, setImageSrc] = useState(coverImage || NotFoundImage);
+  const navigate = useNavigate();
+
+  const handleImageError = () => {
+    setImageSrc(NotFoundImage);
+  };
 
   return (
     <div className="gamecard">
       <div className="gamecard__cover-container">
         <img
           className="gamecard__cover"
-          src={coverImage}
+          src={imageSrc}
           alt={`${title} cover image`}
+          onError={handleImageError}
         />
       </div>
       <div className="gamecard__pnr">
@@ -39,7 +46,11 @@ function GameCard({
         </div>
       </div>
       <h2 className="gamecard__title">{title}</h2>
-      <h3 className="gamecard__subtitle">Released on {releaseDate}</h3>
+      <h3 className="gamecard__subtitle">
+        {releaseDate !== null
+          ? `Released on ${releaseDate}`
+          : `Release date not found`}
+      </h3>
       <TagBox tags={tags} />
       <div className="gamecard__button">
         <Button

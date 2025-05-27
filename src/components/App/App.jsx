@@ -13,6 +13,7 @@ function App() {
   const [currentGallery, setCurrentGallery] = useState([]);
   const [currentFilters, setCurrentFilters] = useState({
     sort: "name",
+    ordering: "Descending",
     filters: {},
   });
 

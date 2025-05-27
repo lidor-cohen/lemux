@@ -10,6 +10,7 @@ function Button({
   icon,
   size = 6,
   onClick = () => {},
+  ...props
 }) {
   const [playSound] = useSound(clickSound);
 
@@ -27,8 +28,11 @@ function Button({
         paddingBlock: size,
         paddingInline: size * 4,
       }}
+      {...props}
     >
-      <span className={`button__text ${theme}-button__text`}>{label}</span>
+      {label !== "" && (
+        <span className={`button__text ${theme}-button__text`}>{label}</span>
+      )}{" "}
       {icon && (
         <img className="button__icon" src={icon} alt="button icon image" />
       )}

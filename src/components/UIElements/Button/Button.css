@@ -12,7 +12,6 @@
   transition: box-shadow 0.1s ease-out, transform 0.1s ease-out;
   cursor: pointer;
 
-  min-width: 100px;
   width: fit-content;
 
   display: flex;

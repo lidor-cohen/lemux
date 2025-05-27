@@ -24,19 +24,32 @@ function Gallery() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getGameList({ page, sort: currentFilters.sort })
-      .then((res) => res.json())
-      .then((json) => {
-        setCurrentGallery((prevGames) => [...prevGames, ...json.results]);
-        setLoading(false);
-      });
+    if (page > 1)
+      getGameList({
+        page,
+        sort:
+          currentFilters.ordering === "Descending"
+            ? `-${currentFilters.sort}`
+            : `${currentFilters.sort}`,
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setCurrentGallery((prevGames) => [...prevGames, ...json.results]);
+          setLoading(false);
+        });
   }, [page]);
 
   useEffect(() => {
     setPage(1);
     setCurrentGallery([]);
     setLoading(true);
-    getGameList({ page: 1, sort: currentFilters.sort })
+    getGameList({
+      page: 1,
+      sort:
+        currentFilters.ordering === "Descending"
+          ? `-${currentFilters.sort}`
+          : `${currentFilters.sort}`,
+    })
       .then((res) => res.json())
       .then((json) => {
         setCurrentGallery(json.results);
