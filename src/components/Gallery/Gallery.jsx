@@ -1,24 +1,48 @@
 import "./Gallery.css";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { getGameList } from "../../utils/apis/rawgApi";
 
 import GameCard from "../GameCard/GameCard";
 import Loader from "../UIElements/Loader/Loader";
 
-function Gallery({ sort }) {
-  const [games, setGames] = useState([]);
+import CurrentGalleryContext from "../../contexts/CurrentGalleryContext";
+import CurrentFiltersContext from "../../contexts/CurrentFiltersContext";
+
+function Gallery() {
+  const { currentGallery, setCurrentGallery } = useContext(
+    CurrentGalleryContext
+  );
+
+  const { currentFilters, setCurrentFilters } = useContext(
+    CurrentFiltersContext
+  );
+
+  const galleryRef = useRef();
+
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getGameList({ page, sort })
+    getGameList({ page, sort: currentFilters.sort })
       .then((res) => res.json())
       .then((json) => {
-        setGames((prevGames) => [...prevGames, ...json.results]);
+        setCurrentGallery((prevGames) => [...prevGames, ...json.results]);
         setLoading(false);
       });
   }, [page]);
+
+  useEffect(() => {
+    setPage(1);
+    setCurrentGallery([]);
+    setLoading(true);
+    getGameList({ page: 1, sort: currentFilters.sort })
+      .then((res) => res.json())
+      .then((json) => {
+        setCurrentGallery(json.results);
+        setLoading(false);
+      });
+  }, [currentFilters]);
 
   function handleScroll() {
     if (
@@ -40,8 +64,8 @@ function Gallery({ sort }) {
 
   return (
     <div className="gallery-container">
-      <div className="gallery">
-        {games.map((item) => (
+      <div className="gallery" ref={galleryRef}>
+        {currentGallery.map((item) => (
           <GameCard
             key={item.id}
             id={item.id}

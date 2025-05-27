@@ -1,20 +1,37 @@
 import "./App.css";
 
 import { Route, Routes } from "react-router";
+import { useState } from "react";
 
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
 import Navbar from "../Navbar/Navbar";
+import CurrentGalleryContext from "../../contexts/CurrentGalleryContext";
+import CurrentFiltersContext from "../../contexts/CurrentFiltersContext";
 
 function App() {
+  const [currentGallery, setCurrentGallery] = useState([]);
+  const [currentFilters, setCurrentFilters] = useState({
+    sort: "name",
+    filters: {},
+  });
+
   return (
     <>
       <div className="page">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/:gameId" element={<GamePage />} />
-        </Routes>
+        <CurrentFiltersContext.Provider
+          value={{ currentFilters, setCurrentFilters }}
+        >
+          <CurrentGalleryContext.Provider
+            value={{ currentGallery, setCurrentGallery }}
+          >
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/:gameId" element={<GamePage />} />
+            </Routes>
+          </CurrentGalleryContext.Provider>
+        </CurrentFiltersContext.Provider>
       </div>
     </>
   );
