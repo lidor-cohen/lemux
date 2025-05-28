@@ -2,9 +2,11 @@
 
 A sleek React web app for exploring video games using the [RAWG Video Games Database API](https://rawg.io/apidocs). Search, discover, and browse games with details, ratings, trailers, and store links — all in a modern, responsive UI inspired by Neubrutalism style.
 
-<button style='background-color: #faf3dd; border: 2px solid black; border-radius: 5px; padding:5px 15px; box-shadow: 1px 1px 0 #e63946' onclick="window.location.href='https://chic-centaur-fa51d2.netlify.app/'">
-  See the project
-</button>
+<p align="center">
+  <a href="https://chic-centaur-fa51d2.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/See%20Project-%23FAF3DD?style=for-the-badge&logo=netlify&logoColor=black&labelColor=black" alt="See the project"/>
+  </a>
+</p>
 
 ## ✨ Features
 
