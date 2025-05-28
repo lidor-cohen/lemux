@@ -1,12 +1,17 @@
 .gamepage {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
 }
 
 .gamepage__section {
   display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+.gamepage__section_type_regular {
+  align-items: center;
 }
 
 .gamepage__section_type_hero {
@@ -48,4 +53,25 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.gamepage__section-title {
+  margin-bottom: 30px;
+  padding: 7.5px 25px;
+
+  font-size: 20px;
+
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  border: 3px solid black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--primary-color);
+
+  display: flex;
+  gap: 12px;
+}
+
+.gamepage__ratings {
+  display: flex;
+  gap: 20px;
 }

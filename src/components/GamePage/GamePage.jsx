@@ -1,9 +1,10 @@
 import "./GamePage.css";
 
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 
 import Button from "../UIElements/Button/Button";
+import RatingStars from "../UIElements/RatingStars/RatingStars";
 
 import { stores } from "../../utils/constants";
 import {
@@ -11,9 +12,9 @@ import {
   getGameStores,
   getGameTrailers,
 } from "../../utils/apis/rawgApi";
+import RatingCard from "../UIElements/RatingCard/RatingCard";
 
 function GamePage() {
-  const navigate = useNavigate();
   const { gameId } = useParams();
   const [game, setGame] = useState({
     gameDetails: {},
@@ -36,7 +37,7 @@ function GamePage() {
             released: json.released,
             website: json.website,
             rating: json.rating,
-            ratings: json.ratings,
+            ratings: json.ratings || [],
             platforms: json.platforms.map((item) => item.slug),
             genres: json.genres.map((item) => item.name),
             tags: json.tags.map((item) => item.name),
@@ -73,7 +74,7 @@ function GamePage() {
 
   return (
     <div className="gamepage">
-      <div className="gamepage__section gamepage__section_type_hero">
+      <section className="gamepage__section gamepage__section_type_hero">
         <div className="gamepage__cover">
           <img
             src={game.gameDetails.coverImage || null}
@@ -97,7 +98,22 @@ function GamePage() {
               ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="gamepage__section gamepage__section_type_regular">
+        <h1 className="gamepage__section-title">
+          Rating:
+          <RatingStars rating={game.gameDetails.rating} />(
+          {game.gameDetails.rating} / 5)
+        </h1>
+        <div className="gamepage__ratings">
+          {Array.isArray(game.gameDetails.ratings) &&
+            game.gameDetails.ratings.length > 0 &&
+            game.gameDetails.ratings.map((item) => (
+              <RatingCard ratingObject={item} />
+            ))}
+        </div>
+      </section>
     </div>
   );
 }

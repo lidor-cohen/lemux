@@ -1,0 +1,50 @@
+.rating-card {
+  width: 250px;
+
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  border: 3px solid black;
+  box-shadow: 3px 3px 0 var(--primary-color);
+  border-radius: 10px;
+
+  padding: 50px 20px 30px 20px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  font-size: 12px;
+}
+
+.rating-card__emoji {
+  position: absolute;
+  top: -10px;
+  padding: 5px;
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1;
+
+  background-color: var(--accent-color);
+  border-radius: 100px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 0 var(--primary-color);
+}
+
+.rating-card__percent {
+  font-size: 20px;
+}
+
+.rating-card__percent,
+.rating-card__text {
+  margin: 0;
+}
+
+.rating-card__text_type_emphasized {
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: 600;
+  display: block;
+}
