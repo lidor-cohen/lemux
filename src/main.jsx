@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./components/App/App.jsx";
 import { BrowserRouter } from "react-router";
 
+// stage-1-frontend-api
+
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StrictMode>
