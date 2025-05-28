@@ -17,11 +17,15 @@ const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
   return fetch(url, options);
 };
 
-export const getGameList = ({ page = 1, sort, genre }) => {
+export const getGameList = ({ page = 1, sort, genre, search }) => {
   const params = { page, page_size: 12 };
 
   if (sort) params.ordering = sort;
   if (genre) params.genres = genre.toLowerCase();
+  if (search) {
+    params.search = search;
+    params.ordering = "-added";
+  }
 
   return call({ endpoint: "/games", params });
 };

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import Main from "../Main/Main";
 import GamePage from "../GamePage/GamePage";
+import ResultsPage from "../ResultsPage/ResultsPage";
 import Navbar from "../Navbar/Navbar";
 
 import CurrentGalleryContext from "../../contexts/CurrentGalleryContext";
@@ -33,6 +34,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/:gameId" element={<GamePage />} />
+              <Route path="/search/:query" element={<ResultsPage />} />
             </Routes>
           </CurrentGalleryContext.Provider>
         </CurrentFiltersContext.Provider>

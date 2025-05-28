@@ -2,7 +2,7 @@ import "./Navbar.css";
 
 import { useNavigate } from "react-router";
 
-import SearchBar from "../UIElements/SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import Logo from "../UIElements/Logo/Logo";
 import DiceImage from "../../assets/icons/dice.svg";
 
