@@ -1,9 +1,12 @@
 import "./Navbar.css";
 
+import { useNavigate } from "react-router";
+
 import SearchBar from "../UIElements/SearchBar/SearchBar";
 import Logo from "../UIElements/Logo/Logo";
 import DiceImage from "../../assets/icons/dice.svg";
-import { useNavigate } from "react-router";
+
+import { getRandomInt } from "../../utils/helpers";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -23,6 +26,7 @@ function Navbar() {
         className="navbar__random-game"
         src={DiceImage}
         alt="Random Game Dice"
+        onClick={() => navigate(`/${getRandomInt(1, 9999)}`)}
       />
     </div>
   );

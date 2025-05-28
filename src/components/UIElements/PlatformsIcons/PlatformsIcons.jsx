@@ -8,7 +8,7 @@ import MacOSLogo from "../../../assets/icons/platforms/macos.svg";
 
 import { useMemo } from "react";
 
-function PlatformsIcons({ platforms = [] }) {
+function PlatformsIcons({ platforms = [], ...props }) {
   const platformMap = {
     xbox: { logo: XboxLogo, name: "Xbox" },
     playstation: { logo: PlaystationLogo, name: "PlayStation" },
@@ -37,7 +37,7 @@ function PlatformsIcons({ platforms = [] }) {
   }, [platforms]);
 
   return (
-    <div className="platforms-icons">
+    <div className="platforms-icons" {...props}>
       {uniquePlatforms.map((platform) => (
         <img
           key={platform.name}

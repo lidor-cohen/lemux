@@ -25,6 +25,8 @@
   border: 2px solid black;
   box-shadow: 3px 3px 0 var(--primary-color);
   flex: 2;
+  position: relative;
+  max-height: 350px;
 }
 
 .gamepage__cover img {
@@ -39,7 +41,12 @@
 }
 
 .gamepage__title {
+  margin: 0;
+}
+.gamepage__released {
+  color: var(--secondary-text-color);
   margin-top: 0;
+  font-size: 16px;
 }
 
 .gamepage__description {
@@ -73,6 +80,7 @@
 
 .gamepage__ratings {
   display: flex;
+  flex-direction: row-reverse;
   gap: 20px;
 }
 

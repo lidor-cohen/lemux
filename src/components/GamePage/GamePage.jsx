@@ -1,11 +1,13 @@
 import "./GamePage.css";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import ReactPlayer from "react-player";
 import Button from "../UIElements/Button/Button";
 import RatingStars from "../UIElements/RatingStars/RatingStars";
+import RatingCard from "../UIElements/RatingCard/RatingCard";
+import PlatformsIcons from "../UIElements/PlatformsIcons/PlatformsIcons";
+import TagBox from "../UIElements/TagBox/TagBox";
 
 import { stores } from "../../utils/constants";
 import {
@@ -13,7 +15,6 @@ import {
   getGameStores,
   getGameTrailers,
 } from "../../utils/apis/rawgApi";
-import RatingCard from "../UIElements/RatingCard/RatingCard";
 
 function GamePage() {
   const { gameId } = useParams();
@@ -39,7 +40,7 @@ function GamePage() {
             website: json.website,
             rating: json.rating,
             ratings: json.ratings || [],
-            platforms: json.platforms.map((item) => item.slug),
+            platforms: json.platforms.map((item) => item.platform.slug),
             genres: json.genres.map((item) => item.name),
             tags: json.tags.map((item) => item.name),
             publishers: json.publishers.map((item) => item.name),
@@ -74,12 +75,22 @@ function GamePage() {
         }));
       })
       .catch(console.error);
-  }, []);
+  }, [gameId]);
 
   return (
     <div className="gamepage">
       <section className="gamepage__section gamepage__section_type_hero">
         <div className="gamepage__cover">
+          <PlatformsIcons
+            platforms={game.gameDetails.platforms}
+            style={{
+              position: "absolute",
+              top: "20px",
+              left: "20px",
+              backgroundColor: "white",
+              padding: "5px",
+            }}
+          />
           <img
             src={game.gameDetails.coverImage || null}
             alt={game.gameDetails.name + " cover image"}
@@ -87,6 +98,10 @@ function GamePage() {
         </div>
         <div className="gamepage__details">
           <h1 className="gamepage__title">{game.gameDetails.name}</h1>
+          <h2 className="gamepage__released">
+            Released on {game.gameDetails.released}
+          </h2>
+          <TagBox tags={game.gameDetails.genres} />
           <p className="gamepage__description">
             {game.gameDetails.description}
           </p>

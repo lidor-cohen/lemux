@@ -4,6 +4,6 @@
 }
 
 .platforms-icons img {
-  width: 12.5px;
+  width: 12.5px !important;
   aspect-ratio: 1;
 }
