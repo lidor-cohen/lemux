@@ -75,3 +75,20 @@
   display: flex;
   gap: 20px;
 }
+
+.gamepage__trailers-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding-block: 10px;
+  padding-inline: 10px;
+  scroll-behavior: smooth;
+  max-width: 100%;
+}
+
+.carousel__item {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+}

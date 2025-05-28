@@ -1,8 +1,9 @@
 import "./GamePage.css";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+import ReactPlayer from "react-player";
 import Button from "../UIElements/Button/Button";
 import RatingStars from "../UIElements/RatingStars/RatingStars";
 
@@ -66,7 +67,10 @@ function GamePage() {
       .then((json) => {
         setGame((prev) => ({
           ...prev,
-          gameTrailers: json.results.map((item) => item.data.max),
+          gameTrailers: json.results.map((item) => ({
+            preview: item.preview,
+            trailer: item.data.max,
+          })),
         }));
       })
       .catch(console.error);
@@ -88,8 +92,9 @@ function GamePage() {
           </p>
           <div className="gamepage__getgame">
             {game.gameStores &&
-              game.gameStores.map((item) => (
+              game.gameStores.map((item, index) => (
                 <Button
+                  key={index}
                   theme="secondary"
                   icon={stores[item.id]?.logo}
                   label={`Get game on ${stores[item.id]?.name}`}
@@ -109,11 +114,26 @@ function GamePage() {
         <div className="gamepage__ratings">
           {Array.isArray(game.gameDetails.ratings) &&
             game.gameDetails.ratings.length > 0 &&
-            game.gameDetails.ratings.map((item) => (
-              <RatingCard ratingObject={item} />
+            game.gameDetails.ratings.map((item, index) => (
+              <RatingCard key={index} ratingObject={item} />
             ))}
         </div>
       </section>
+      {Array.isArray(game.gameTrailers) && game.gameTrailers.length > 0 && (
+        <section className="gamepage__section gamepage__section_type_regular">
+          <h1 className="gamepage__section-title">Game Trailers</h1>
+          <div className="gamepage__trailers-carousel">
+            {game.gameTrailers.map((item, index) => (
+              <div className="carousel__item" key={index}>
+                <video controls width="100%" poster={item.preview}>
+                  <source src={item.trailer} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
