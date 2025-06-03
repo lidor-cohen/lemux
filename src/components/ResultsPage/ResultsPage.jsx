@@ -1,7 +1,7 @@
 import "./ResultsPage.css";
 
-import { useNavigate, useParams, useContext } from "react-router";
-import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import { useEffect, useState, useContext } from "react";
 
 import PlatformsIcons from "../UIElements/PlatformsIcons/PlatformsIcons";
 import RatingStars from "../UIElements/RatingStars/RatingStars";
