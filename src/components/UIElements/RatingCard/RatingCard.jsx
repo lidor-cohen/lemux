@@ -1,33 +1,21 @@
-import { useMemo } from "react";
 import "./RatingCard.css";
-import { useEffect } from "react";
 
 function RatingCard({ ratingObject }) {
-  useEffect(() => {
-    console.log(ratingObject);
-  }, []);
+  const emojiMap = {
+    1: "😡",
+    2: "😤",
+    3: "😐",
+    4: "😊",
+    5: "🤩",
+  };
 
-  const emojiMap = useMemo(
-    () => ({
-      1: "😡",
-      2: "😤",
-      3: "😐",
-      4: "😊",
-      5: "🤩",
-    }),
-    []
-  );
-
-  const titleMap = useMemo(
-    () => ({
-      1: "Horrible",
-      2: "Bad",
-      3: "Meh",
-      4: "Recommended",
-      5: "Exceptional",
-    }),
-    []
-  );
+  const titleMap = {
+    1: "Horrible",
+    2: "Bad",
+    3: "Meh",
+    4: "Recommended",
+    5: "Exceptional",
+  };
 
   return (
     <div className="rating-card">
@@ -36,7 +24,7 @@ function RatingCard({ ratingObject }) {
       <p className="rating-card__text">
         of people voted for this game as{" "}
         <span className="rating-card__text_type_emphasized">
-          - {titleMap[ratingObject.id]} -
+          {titleMap[ratingObject.id]}
         </span>
       </p>
     </div>

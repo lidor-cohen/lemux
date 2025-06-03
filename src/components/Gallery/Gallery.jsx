@@ -35,7 +35,7 @@ function Gallery() {
           setLoading(false);
         })
         .catch(console.error);
-  }, [page]);
+  }, [page, currentFilters, setCurrentGallery]);
 
   useEffect(() => {
     setPage(1);
@@ -58,7 +58,7 @@ function Gallery() {
         setLoading(false);
       })
       .catch(console.error);
-  }, [currentFilters]);
+  }, [currentFilters, setCurrentGallery]);
 
   function handleScroll() {
     if (

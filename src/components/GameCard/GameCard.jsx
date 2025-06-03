@@ -32,9 +32,10 @@ function GameCard({
     <div className="gamecard">
       <div className="gamecard__cover-container">
         <img
+          loading="lazy"
           className="gamecard__cover"
           src={imageSrc}
-          alt={`${title} cover image`}
+          alt={`${title} cover`}
           onError={handleImageError}
         />
       </div>

@@ -14,7 +14,17 @@ import ArrowIcon from "../../assets/icons/arrow.svg";
 function ResultsPage() {
   const { query } = useParams();
   const [results, setResults] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    function windowSizeState() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", windowSizeState);
+    return () => window.removeEventListener("resize", windowSizeState);
+  }, []);
 
   useEffect(() => {
     getGameList({ search: query })
@@ -33,10 +43,10 @@ function ResultsPage() {
   }, [query]);
 
   return (
-    <div className="results-page">
-      <h1 className="results__header">Results for: {query}</h1>
-      {results.map((result) => (
-        <div className="result-item">
+    <section className="results-page">
+      <h2 className="results__header">Results for: {query}</h2>
+      {results.map((result, index) => (
+        <div key={index} className="result-item">
           <div className="result-item__left-side">
             <img
               src={result.coverImage}
@@ -45,22 +55,41 @@ function ResultsPage() {
             />
             <div className="result-item__text">
               <h3 className="result-item__title">{result.name}</h3>
-              <PlatformsIcons platforms={result.platforms} />
+              {windowWidth < 600 && windowWidth > 400 ? (
+                <RatingStars rating={result.rating} size="15px" />
+              ) : (
+                windowWidth > 400 && (
+                  <PlatformsIcons platforms={result.platforms} />
+                )
+              )}
             </div>
           </div>
 
-          <div className="result-item__right-side">
-            <Button
-              theme="secondary"
-              label="Read More"
-              icon={ArrowIcon}
-              onClick={() => navigate(`/${result.id}`)}
-            />
-            <RatingStars rating={result.rating} />
-          </div>
+          {windowWidth > 600 ? (
+            <div className="result-item__right-side">
+              <Button
+                theme="secondary"
+                label="Read More"
+                icon={ArrowIcon}
+                onClick={() => navigate(`/${result.id}`)}
+              />
+              <RatingStars rating={result.rating} />
+            </div>
+          ) : (
+            <div className="result-item__right-side">
+              <Button
+                theme="secondary"
+                label=""
+                icon={ArrowIcon}
+                size={4}
+                onClick={() => navigate(`/${result.id}`)}
+              />
+              <PlatformsIcons platforms={result.platforms} />
+            </div>
+          )}
         </div>
       ))}
-    </div>
+    </section>
   );
 }
 

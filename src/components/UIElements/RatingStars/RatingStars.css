@@ -5,6 +5,7 @@
 
 .rating-star {
   width: 20px;
+  aspect-ratio: 1;
 }
 
 .rating-star_type_empty {

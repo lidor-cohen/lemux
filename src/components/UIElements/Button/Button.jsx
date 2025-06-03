@@ -33,9 +33,7 @@ function Button({
       {label !== "" && (
         <span className={`button__text ${theme}-button__text`}>{label}</span>
       )}{" "}
-      {icon && (
-        <img className="button__icon" src={icon} alt="button icon image" />
-      )}
+      {icon && <img className="button__icon" src={icon} alt="button icon" />}
     </button>
   );
 }

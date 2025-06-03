@@ -1,9 +1,8 @@
 import "./RatingStars.css";
 
 import RatingStarSVG from "../../../assets/icons/star.svg";
-import { useEffect } from "react";
 
-function RatingStars({ rating = 1 }) {
+function RatingStars({ rating = 1, size = "20px" }) {
   return (
     <div className="rating-stars">
       {Array.from({ length: 5 }, (_, i) => (
@@ -14,6 +13,11 @@ function RatingStars({ rating = 1 }) {
           key={i}
           src={RatingStarSVG}
           alt="Rating Star"
+          style={{
+            width: size,
+            height: size,
+            aspectRatio: 1,
+          }}
         />
       ))}
     </div>

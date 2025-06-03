@@ -1,7 +1,7 @@
 import "./Tag.css";
 
 function Tag({
-  label,
+  label = "default",
   active = true,
   action,
   disabled = false,
@@ -10,6 +10,14 @@ function Tag({
   const handleClick = () => {
     if (disabled || !action) return;
     action();
+  };
+
+  const handleKeyDown = (event) => {
+    if (disabled || !action) return;
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      action();
+    }
   };
 
   const tagClasses = [
@@ -22,13 +30,25 @@ function Tag({
     .filter(Boolean)
     .join(" ");
 
+  if (action && !disabled) {
+    return (
+      <div
+        className={tagClasses}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={label}
+        aria-pressed={active}
+        aria-disabled={disabled}
+      >
+        {label}
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={tagClasses}
-      onClick={handleClick}
-      aria-pressed={action ? active : undefined}
-      aria-disabled={disabled}
-    >
+    <div className={tagClasses} aria-label={label} role="status">
       {label}
     </div>
   );
