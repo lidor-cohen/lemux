@@ -72,30 +72,28 @@ function Gallery() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="gallery-container">
-      <div className="gallery" ref={galleryRef}>
+    <section className="gallery-container">
+      <ul className="gallery" ref={galleryRef}>
         {currentGallery.map((item) => (
-          <GameCard
-            key={item.id}
-            id={item.id}
-            title={item.name}
-            releaseDate={item.released}
-            coverImage={item.background_image}
-            platforms={item.platforms.map((obj) => obj.platform.slug)}
-            rating={item.rating}
-            tags={item.genres.map((item) => item.name)}
-          />
+          <li key={item.id}>
+            <GameCard
+              id={item.id}
+              title={item.name}
+              releaseDate={item.released}
+              coverImage={item.background_image}
+              platforms={item.platforms.map((obj) => obj.platform.slug)}
+              rating={item.rating}
+              tags={item.genres.map((item) => item.name)}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
       {loading && <Loader />}
-    </div>
+    </section>
   );
 }
 

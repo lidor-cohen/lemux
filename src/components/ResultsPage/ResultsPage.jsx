@@ -43,7 +43,7 @@ function ResultsPage() {
   }, [query]);
 
   return (
-    <section className="results-page">
+    <main className="results-page">
       <h2 className="results__header">Results for: {query}</h2>
       {results.map((result, index) => (
         <div key={index} className="result-item">
@@ -89,7 +89,7 @@ function ResultsPage() {
           )}
         </div>
       ))}
-    </section>
+    </main>
   );
 }
 

@@ -78,7 +78,7 @@ function GamePage() {
   }, [gameId]);
 
   return (
-    <section className="gamepage">
+    <main className="gamepage">
       <div className="gamepage__section gamepage__section_type_hero">
         <div className="gamepage__cover">
           <PlatformsIcons
@@ -152,7 +152,7 @@ function GamePage() {
           </div>
         </div>
       )}
-    </section>
+    </main>
   );
 }
 

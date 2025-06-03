@@ -29,7 +29,7 @@ function GameCard({
   };
 
   return (
-    <div className="gamecard">
+    <article className="gamecard">
       <div className="gamecard__cover-container">
         <img
           loading="lazy"
@@ -65,7 +65,7 @@ function GameCard({
           }}
         />
       </div>
-    </div>
+    </article>
   );
 }
 
