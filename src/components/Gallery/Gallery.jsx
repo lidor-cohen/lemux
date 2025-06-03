@@ -8,12 +8,14 @@ import Loader from "../UIElements/Loader/Loader";
 
 import CurrentGalleryContext from "../../contexts/CurrentGalleryContext";
 import CurrentFiltersContext from "../../contexts/CurrentFiltersContext";
+import NotificationContext from "../../contexts/NotificationContext";
 
 function Gallery() {
   const { currentGallery, setCurrentGallery } = useContext(
     CurrentGalleryContext
   );
   const { currentFilters } = useContext(CurrentFiltersContext);
+  const { notifyError } = useContext(NotificationContext);
 
   const galleryRef = useRef();
 
@@ -34,7 +36,7 @@ function Gallery() {
           setCurrentGallery((prevGames) => [...prevGames, ...json.results]);
           setLoading(false);
         })
-        .catch(console.error);
+        .catch(notifyError);
   }, [page, currentFilters, setCurrentGallery]);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function Gallery() {
         setCurrentGallery(json.results);
         setLoading(false);
       })
-      .catch(console.error);
+      .catch(notifyError);
   }, [currentFilters, setCurrentGallery]);
 
   function handleScroll() {

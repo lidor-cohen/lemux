@@ -1,6 +1,6 @@
 import "./ResultsPage.css";
 
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, useContext } from "react-router";
 import { useEffect, useState } from "react";
 
 import PlatformsIcons from "../UIElements/PlatformsIcons/PlatformsIcons";
@@ -11,10 +11,13 @@ import { getGameList } from "../../utils/apis/rawgApi";
 
 import ArrowIcon from "../../assets/icons/arrow.svg";
 
+import NotificationContext from "../../contexts/NotificationContext";
+
 function ResultsPage() {
   const { query } = useParams();
   const [results, setResults] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { notifyError } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -39,7 +42,8 @@ function ResultsPage() {
             rating: item.rating,
           }))
         )
-      );
+      )
+      .catch(notifyError);
   }, [query]);
 
   return (

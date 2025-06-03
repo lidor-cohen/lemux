@@ -1,6 +1,6 @@
 import "./GamePage.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 
 import Button from "../UIElements/Button/Button";
@@ -9,7 +9,9 @@ import RatingCard from "../UIElements/RatingCard/RatingCard";
 import PlatformsIcons from "../UIElements/PlatformsIcons/PlatformsIcons";
 import TagBox from "../UIElements/TagBox/TagBox";
 
-import { stores } from "../../utils/constants";
+import NotificationContext from "../../contexts/NotificationContext";
+
+import { STORES } from "../../utils/constants";
 import {
   getGameDetails,
   getGameStores,
@@ -17,6 +19,7 @@ import {
 } from "../../utils/apis/rawgApi";
 
 function GamePage() {
+  const { notifyError } = useContext(NotificationContext);
   const { gameId } = useParams();
   const [game, setGame] = useState({
     gameDetails: {},
@@ -48,7 +51,7 @@ function GamePage() {
           },
         }));
       })
-      .catch(console.error);
+      .catch(notifyError);
 
     getGameStores({ id: gameId })
       .then((res) => res.json())
@@ -112,8 +115,8 @@ function GamePage() {
                 <Button
                   key={index}
                   theme="secondary"
-                  icon={stores[item.id]?.logo}
-                  label={`Get game on ${stores[item.id]?.name}`}
+                  icon={STORES[item.id]?.logo}
+                  label={`Get game on ${STORES[item.id]?.name}`}
                   onClick={() => window.open(item.url, "_blank")}
                 />
               ))}

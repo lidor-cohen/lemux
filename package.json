@@ -14,7 +14,7 @@
     "ldrs": "^1.1.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-player": "^2.16.0",
+    "react-hot-toast": "^2.5.2",
     "react-router": "^7.6.0",
     "use-sound": "^5.0.0",
     "validator": "^13.15.0"
