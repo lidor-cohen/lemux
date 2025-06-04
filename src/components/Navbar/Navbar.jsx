@@ -12,23 +12,35 @@ function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <div
         className="navbar__logo"
-        onClick={() => {
-          navigate("/");
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            navigate("/");
+          }
         }}
+        onClick={() => navigate("/")}
       >
         <Logo />
       </div>
       <SearchBar />
-      <img
+      <div
         className="navbar__random-game"
-        src={DiceImage}
-        alt="Random Game Dice"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            navigate("/");
+          }
+        }}
         onClick={() => navigate(`/${getRandomInt(1, 9999)}`)}
-      />
-    </div>
+      >
+        <img src={DiceImage} alt="Random Game Dice" />
+      </div>
+    </nav>
   );
 }
 

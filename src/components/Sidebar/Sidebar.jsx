@@ -58,7 +58,7 @@ function Sidebar() {
   }
 
   return (
-    <div className="sidebar">
+    <article className="sidebar">
       <h2 className="sidebar__header">Filters</h2>
       <div className="sidebar__item sidebar__item_type_inline">
         <h3 className="sidebar__item-header">ordering: </h3>
@@ -95,7 +95,7 @@ function Sidebar() {
           action={handleFilterGenre}
         />
       </div>
-    </div>
+    </article>
   );
 }
 

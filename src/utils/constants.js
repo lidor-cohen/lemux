@@ -9,7 +9,9 @@ import PSNLogo from "../assets/logos/psn.svg";
 import XboxLogo from "../assets/logos/xbox.svg";
 import Xbox360Logo from "../assets/logos/xbox360.svg";
 
-export const stores = {
+export const BASE_URL = "https://api.rawg.io/api";
+
+export const STORES = {
   1: {
     name: "Steam",
     domain: "store.steampowered.com",

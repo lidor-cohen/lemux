@@ -46,3 +46,14 @@
 .result-item__title {
   margin: 0;
 }
+
+@media only screen and (max-width: 600px) {
+  .result-item__title {
+    font-size: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}

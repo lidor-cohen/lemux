@@ -1,6 +1,6 @@
 import "./GamePage.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 
 import Button from "../UIElements/Button/Button";
@@ -9,7 +9,9 @@ import RatingCard from "../UIElements/RatingCard/RatingCard";
 import PlatformsIcons from "../UIElements/PlatformsIcons/PlatformsIcons";
 import TagBox from "../UIElements/TagBox/TagBox";
 
-import { stores } from "../../utils/constants";
+import NotificationContext from "../../contexts/NotificationContext";
+
+import { STORES } from "../../utils/constants";
 import {
   getGameDetails,
   getGameStores,
@@ -17,6 +19,7 @@ import {
 } from "../../utils/apis/rawgApi";
 
 function GamePage() {
+  const { notifyError } = useContext(NotificationContext);
   const { gameId } = useParams();
   const [game, setGame] = useState({
     gameDetails: {},
@@ -48,7 +51,7 @@ function GamePage() {
           },
         }));
       })
-      .catch(console.error);
+      .catch(notifyError);
 
     getGameStores({ id: gameId })
       .then((res) => res.json())
@@ -78,8 +81,8 @@ function GamePage() {
   }, [gameId]);
 
   return (
-    <div className="gamepage">
-      <section className="gamepage__section gamepage__section_type_hero">
+    <main className="gamepage">
+      <div className="gamepage__section gamepage__section_type_hero">
         <div className="gamepage__cover">
           <PlatformsIcons
             platforms={game.gameDetails.platforms}
@@ -94,6 +97,7 @@ function GamePage() {
           <img
             src={game.gameDetails.coverImage || null}
             alt={game.gameDetails.name + " cover image"}
+            loading="lazy"
           />
         </div>
         <div className="gamepage__details">
@@ -111,20 +115,22 @@ function GamePage() {
                 <Button
                   key={index}
                   theme="secondary"
-                  icon={stores[item.id]?.logo}
-                  label={`Get game on ${stores[item.id]?.name}`}
+                  icon={STORES[item.id]?.logo}
+                  label={`Get game on ${STORES[item.id]?.name}`}
                   onClick={() => window.open(item.url, "_blank")}
                 />
               ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="gamepage__section gamepage__section_type_regular">
+      <div className="gamepage__section gamepage__section_type_regular">
         <h1 className="gamepage__section-title">
           Rating:
-          <RatingStars rating={game.gameDetails.rating} />(
-          {game.gameDetails.rating} / 5)
+          <RatingStars rating={game.gameDetails.rating} />
+          <span className="gamepage__rating-text">
+            ({game.gameDetails.rating} / 5)
+          </span>
         </h1>
         <div className="gamepage__ratings">
           {Array.isArray(game.gameDetails.ratings) &&
@@ -133,9 +139,9 @@ function GamePage() {
               <RatingCard key={index} ratingObject={item} />
             ))}
         </div>
-      </section>
+      </div>
       {Array.isArray(game.gameTrailers) && game.gameTrailers.length > 0 && (
-        <section className="gamepage__section gamepage__section_type_regular">
+        <div className="gamepage__section gamepage__section_type_regular">
           <h1 className="gamepage__section-title">Game Trailers</h1>
           <div className="gamepage__trailers-carousel">
             {game.gameTrailers.map((item, index) => (
@@ -147,9 +153,9 @@ function GamePage() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
       )}
-    </div>
+    </main>
   );
 }
 

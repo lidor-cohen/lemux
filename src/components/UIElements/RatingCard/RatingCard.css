@@ -1,6 +1,5 @@
 .rating-card {
-  width: 250px;
-
+  flex: 1;
   color: var(--background-color);
   background-color: var(--accent-color);
   border: 3px solid black;
@@ -47,4 +46,5 @@
   text-decoration: underline;
   font-weight: 600;
   display: block;
+  margin-top: 10px;
 }

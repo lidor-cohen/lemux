@@ -29,12 +29,13 @@ function GameCard({
   };
 
   return (
-    <div className="gamecard">
+    <article className="gamecard">
       <div className="gamecard__cover-container">
         <img
+          loading="lazy"
           className="gamecard__cover"
           src={imageSrc}
-          alt={`${title} cover image`}
+          alt={`${title} cover`}
           onError={handleImageError}
         />
       </div>
@@ -64,7 +65,7 @@ function GameCard({
           }}
         />
       </div>
-    </div>
+    </article>
   );
 }
 

@@ -1,7 +1,7 @@
-const baseUrl = "https://api.rawg.io/api";
+import { BASE_URL } from "../constants";
 
 const call = ({ endpoint, method = "GET", body = {}, params = {} }) => {
-  let url = `${baseUrl}${endpoint}?key=${import.meta.env.VITE_RAWG_API_KEY}`;
+  let url = `${BASE_URL}${endpoint}?key=${import.meta.env.VITE_RAWG_API_KEY}`;
   const options = {
     method,
     headers: {

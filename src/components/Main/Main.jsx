@@ -5,10 +5,10 @@ import Gallery from "../Gallery/Gallery";
 
 function Main() {
   return (
-    <div className="main">
+    <main className="main">
       <Sidebar />
       <Gallery />
-    </div>
+    </main>
   );
 }
 
